@@ -53,6 +53,27 @@ attributes
     isOnTheLanding : Boolean
 end
 
+class Bedroom < Room
+attributes
+    nbOfSingleBeds : Integer
+    nbOfDoubleBeds : Integer
+    rate : float
+    isNonSmoking : boolean
+    nbOfUnits : Integer
+end
+
+class Rent 
+attributes
+    discount : float
+    rate : float
+end
+
+class Discount
+attributes
+    percentage : Integer
+    label : String
+end
+
 -- TODO
 
 -- For association classes use the following syntax
@@ -63,6 +84,12 @@ end
 -- attributes
 --     ...
 -- end
+
+composition ContainsRooms between
+Residence[1]
+Room[*]
+end
+
 
 
 constraints
