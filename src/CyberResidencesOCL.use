@@ -175,18 +175,19 @@ constraints
 -- Only adult married.
 -- Easy. Use 'implies'
 
--- context Resident inv adultMarried:
+context Resident inv adultMarried:
+    self.consort -> notEmpty implies self.age > 18
     -- To be registered as married, resident must be adult.
 
 
 -------------------------------------------------------------------------------
---                                 adultTenant
+--    DONE                             adultTenant
 -------------------------------------------------------------------------------
 -- Tenants are adults.
 -- Easy
 
  context Tenant inv adultTenant:
-    self.age > 18
+    self.age >= 18
     -- The minimal age to rent a bedroom is 18 years old.
 
 
@@ -202,12 +203,14 @@ constraints
 
 
 -------------------------------------------------------------------------------
---                                 atLeastABed
+--   DONE                              atLeastABed
 -------------------------------------------------------------------------------
 -- At least one bed for useful bedrooms.
 -- Easy. Use implies.
 
--- context Bedroom inv atLeastABed:
+context Bedroom inv atLeastABed:
+        self.isOutOfOrder = false implies
+        nbOfSingleBeds > 0 or nbOfDoubleBeds > 0
     -- Bedrooms that are not out of order must have at least one bed.
 
 
@@ -217,7 +220,8 @@ constraints
 -- At least one adult per room.
 -- Easy. Use 'implies'
 
--- context Bedroom inv atLeastOneAdult:
+--context Bedroom inv atLeastOneAdult:
+
     -- At least one adult must be presented in all occupied rooms.
 
 
@@ -228,7 +232,8 @@ constraints
 -- Easy
 
 
--- context Resident inv childNonSmoking:
+ context Resident inv childNonSmoking:
+  self.age < 18 implies self.isSmoker = false
     -- Children are always declared as non smoker.
 
 
