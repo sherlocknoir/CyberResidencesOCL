@@ -238,12 +238,14 @@ context Bedroom inv atLeastABed:
 
 
 -------------------------------------------------------------------------------
---                                 childTutored
+--    DONE                             childTutored
 -------------------------------------------------------------------------------
 -- Child tutored.
 -- Medium
 
--- context Resident inv childTutored:
+ context Resident inv childTutored:
+    self.occupiedRoom.residence.category <> Category:: prestige and self.age < 18 implies self.tutors->notEmpty
+
     -- Resident that are less than 18 years old must have at least one
     -- tutor, apart in prestige residences where this rule does not
     -- apply.
@@ -255,7 +257,8 @@ context Bedroom inv atLeastABed:
 -- Limit of cumulated discounts.
 -- Easy. Use 'sum'
 
--- context Rent inv cumulatedDiscounts:
+context Rent inv cumulatedDiscounts:
+    self.discounts.percentage->sum() <= (rate*0.70)
     -- No room will have more that 70% of dicounts cumulated.
 
 
@@ -410,12 +413,13 @@ context Room inv floorBetweenMinAndMax:
 
 
 -------------------------------------------------------------------------------
---                           marriageAntiReflexivity
+--  DONE                         marriageAntiReflexivity
 -------------------------------------------------------------------------------
 -- Anti-reflexivity of marriage relationship.
 -- Easy
 
--- context Resident inv marriageAntiReflexivity:
+context Resident inv marriageAntiReflexivity:
+    self.consort -> notEmpty implies self.consort <> self
     -- A resident cannot mary with himself or herself.
 
 
@@ -431,12 +435,13 @@ context Room inv floorBetweenMinAndMax:
 
 
 -------------------------------------------------------------------------------
---                               marriageSymmetry
+--     DONE                          marriageSymmetry
 -------------------------------------------------------------------------------
 -- Symmetry of marriage relationship.
 -- Easy
 
--- context Resident inv marriageSymmetry:
+context Resident inv marriageSymmetry:
+    self.consort -> notEmpty implies self = self.consort.consort
     -- If a resident is declared to be the consort of another
     -- resident, then the opposite is true as well.
 
@@ -520,12 +525,13 @@ context Room inv floorBetweenMinAndMax:
 
 
 -------------------------------------------------------------------------------
---                             sameNumberIfPrivate
+--      Done                       sameNumberIfPrivate
 -------------------------------------------------------------------------------
 -- Same number if private.
 -- Easy. Use 'implies'.
 
--- context Bathroom inv sameNumberIfPrivate:
+context Bathroom inv sameNumberIfPrivate:
+self.isOnTheLanding = false implies self.number = self.bedroom.number
     -- All bathrooms that are not on the landing, that is that are
     -- private to a bedroom, have the same number of room as this
     -- bedroom.
@@ -568,13 +574,13 @@ context Room inv floorBetweenMinAndMax:
 
 
 -------------------------------------------------------------------------------
---                            smokingPrestigePolicy
+--       DONE                     smokingPrestigePolicy
 -------------------------------------------------------------------------------
 -- No smoking is prestige.
 -- Easy
 
--- context Bedroom inv smokingPrestigePolicy:
-  --  inv self.name = prestige implies self.isNonSmoking = true
+context Bedroom inv smokingPrestigePolicy:
+   self.residence.category = Category::prestige implies self.isNonSmoking = true
     -- There are no smoking rooms at all in residence of prestige.
 
 
