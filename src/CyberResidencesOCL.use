@@ -221,7 +221,7 @@ context Bedroom inv atLeastABed:
 -- Easy. Use 'implies'
 
 --context Bedroom inv atLeastOneAdult:
-   -- self.occupiedRoom implies 
+   -- self.occupants -> notEmpty() implies self.occupants.age > 18
     -- At least one adult must be presented in all occupied rooms.
 
 
@@ -375,23 +375,26 @@ context Bedroom inv atLeastABed:
 
 
 -------------------------------------------------------------------------------
---                            floorBetweenMinAndMax
+--  DONE                          floorBetweenMinAndMax
 -------------------------------------------------------------------------------
 -- Floor between minimum and maximum floors.
 -- Easy
 
--- context Room inv floorBetweenMinAndMax:
+context Room inv floorBetweenMinAndMax:
+    self.floor < self.residence.floorMax and 
+    self.floor > self.residence.floorMin
     -- The floor of a room is between the minium and maximum floor of
     -- the residence.
 
 
 -------------------------------------------------------------------------------
---                                  floorOrder
+--       DONE                           floorOrder
 -------------------------------------------------------------------------------
 -- Order between floorMin and floorMax attributes.
 -- Easy
 
--- context Residence inv floorOrder:
+ context Residence inv floorOrder:
+    self.floorMax >= self.floorMin
     -- The maximum floor is at higher or at the same level that the
     -- minimum floor of the residence.
 
@@ -472,12 +475,13 @@ context Bedroom inv atLeastABed:
 
 
 -------------------------------------------------------------------------------
---                               noTutorForAdults
+--      DONE                         noTutorForAdults
 -------------------------------------------------------------------------------
 -- No tutor for adults.
 -- Easy
 
--- context Resident inv noTutorForAdults:
+ context Resident inv noTutorForAdults:
+    self.age > 18 implies self.tutored->isEmpty()
     -- Adults never have tutor.
 
 
