@@ -280,7 +280,8 @@ context Rent inv cumulatedDiscounts:
 -- Derivation of the attribute discount.
 -- Easy
 
--- context Rent inv deriveDiscount:
+--context Rent inv deriveDiscount:
+  --  derive: (rate * self.discounts.percentage->sum)
     -- The discount for a rent, is the rate of the bedroom multiplied
     -- by the sum of percentages of all discounts.
 
@@ -404,12 +405,13 @@ context Room inv floorBetweenMinAndMax:
 
 
 -------------------------------------------------------------------------------
---                                 labelUnique
+--    DONE NOT TESTED                             labelUnique
 -------------------------------------------------------------------------------
 -- Uniqueness of labels with respect to rents.
 -- Easy. Use 'unique'
 
--- context Rent inv labelUnique:
+context Rent inv labelUnique:
+    self.discounts->isUnique(label)
     -- All discounts associated to a rent have distinct labels.
 
 
@@ -460,12 +462,13 @@ context Resident inv marriageSymmetry:
 
 
 -------------------------------------------------------------------------------
---                            noEmptyRentedBedrooms
+--  DONE NOT TESTED           noEmptyRentedBedrooms
 -------------------------------------------------------------------------------
 -- Rented bedrooms not empty.
 -- Easy. Use 'implies'
 
--- context Bedroom inv noEmptyRentedBedrooms:
+context Bedroom inv noEmptyRentedBedrooms:
+     self.tenant <> Undefined implies self.occupants->notEmpty()
     -- All rented bedrooms are occupied by at least one occupant.
 
 
@@ -475,7 +478,8 @@ context Resident inv marriageSymmetry:
 -- Nobody in rooms not rented.
 -- Easy. Use 'implies'
 
--- context Bedroom inv noSquaters:
+context Bedroom inv noSquaters:
+     self.occupants->notEmpty() implies self.tenant <> Undefined 
     -- Occupants must be exclusively in rooms that are rented by
     -- somebody.
 
@@ -492,12 +496,13 @@ context Resident inv marriageSymmetry:
 
 
 -------------------------------------------------------------------------------
---                             oooBedroomsNotRented
+--  DONE NOT TESTED            oooBedroomsNotRented
 -------------------------------------------------------------------------------
 -- No rental of Out Of Order bedrooms.
 -- Easy
 
--- context Bedroom inv oooBedroomsNotRented:
+context Bedroom inv oooBedroomsNotRented:
+    self.isOutOfOrder implies self.tenant = Undefined
     -- Bedrooms that are out of order cannot be rented.
 
 
