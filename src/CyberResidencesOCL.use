@@ -170,7 +170,7 @@ constraints
 
 
 -------------------------------------------------------------------------------
---                                 adultMarried
+--         DONE                        adultMarried
 -------------------------------------------------------------------------------
 -- Only adult married.
 -- Easy. Use 'implies'
@@ -209,7 +209,7 @@ context Resident inv adultMarried:
 -- Easy. Use implies.
 
 context Bedroom inv atLeastABed:
-        self.isOutOfOrder = false implies
+       not self.isOutOfOrder  implies
         nbOfSingleBeds > 0 or nbOfDoubleBeds > 0
     -- Bedrooms that are not out of order must have at least one bed.
 
@@ -221,12 +221,12 @@ context Bedroom inv atLeastABed:
 -- Easy. Use 'implies'
 
 --context Bedroom inv atLeastOneAdult:
-
+   -- self.occupiedRoom implies 
     -- At least one adult must be presented in all occupied rooms.
 
 
 -------------------------------------------------------------------------------
---                               childNonSmoking
+--      DONE                         childNonSmoking
 -------------------------------------------------------------------------------
 -- Non smoking child.
 -- Easy
@@ -570,6 +570,7 @@ context Bedroom inv atLeastABed:
 -- Easy
 
 -- context Bedroom inv smokingPrestigePolicy:
+  --  inv self.name = prestige implies self.isNonSmoking = true
     -- There are no smoking rooms at all in residence of prestige.
 
 
@@ -584,12 +585,14 @@ context Bedroom inv atLeastABed:
 
 
 -------------------------------------------------------------------------------
---                                  tutorAdult
+--   DONE                               tutorAdult
 -------------------------------------------------------------------------------
 -- Tutors are adults.
 -- Easy
 
--- context Resident inv tutorAdult:
+context Resident inv tutorAdult:
+    self.tutors -> notEmpty implies self.age > 18
+    
     -- A resident can not be the tutor of another resident if he or
     -- she is not an adult.
 
