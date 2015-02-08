@@ -220,8 +220,8 @@ context Bedroom inv atLeastABed:
 -- At least one adult per room.
 -- Easy. Use 'implies'
 
---context Bedroom inv atLeastOneAdult:
-   -- self.occupants -> notEmpty() implies self.occupants.age > 18
+context Bedroom inv atLeastOneAdult:
+   self.occupants -> notEmpty() implies self.occupants->select(age > 18) ->notEmpty()
     -- At least one adult must be presented in all occupied rooms.
 
 
@@ -357,12 +357,13 @@ context Rent inv cumulatedDiscounts:
 
 
 -------------------------------------------------------------------------------
---                               domainPercentage
+--      DONE                         domainPercentage
 -------------------------------------------------------------------------------
 -- Domain of percentage attribute.
 -- Easy
 
--- context Discount inv domainPercentage:
+ context Discount inv domainPercentage:
+        self.percentage > 1 and self.percentage < 100
     -- The percentage is a value between 1 and 100.
 
 
