@@ -50,7 +50,7 @@ end
 
 class Bathroom < Room
 attributes
-    isOnTheLanding : Boolean
+    isOnTheLanding : Boolean -- @derived
 end
 
 class Bedroom < Room
@@ -215,7 +215,7 @@ context Bedroom inv atLeastABed:
 
 
 -------------------------------------------------------------------------------
---                               atLeastOneAdult
+--   DONE                            atLeastOneAdult
 -------------------------------------------------------------------------------
 -- At least one adult per room.
 -- Easy. Use 'implies'
@@ -252,7 +252,7 @@ context Bedroom inv atLeastOneAdult:
 
 
 -------------------------------------------------------------------------------
---                              cumulatedDiscounts
+--   DONE                           cumulatedDiscounts
 -------------------------------------------------------------------------------
 -- Limit of cumulated discounts.
 -- Easy. Use 'sum'
@@ -275,36 +275,42 @@ context Rent inv cumulatedDiscounts:
 
 
 -------------------------------------------------------------------------------
---                                deriveDiscount
+--  DONE NOT TESTED                              deriveDiscount
 -------------------------------------------------------------------------------
 -- Derivation of the attribute discount.
 -- Easy
 
---context Rent inv deriveDiscount:
-  --  derive: (rate * self.discounts.percentage->sum)
+context Rent inv deriveDiscount:
+  self.discount = self.rate * self.discounts.percentage->sum()
     -- The discount for a rent, is the rate of the bedroom multiplied
     -- by the sum of percentages of all discounts.
 
 
 -------------------------------------------------------------------------------
---                                 deriveFloor
+--  DONE                               deriveFloor
 -------------------------------------------------------------------------------
 -- Derivation of the attribute floor.
 -- Easy
 
--- context Room inv deriveFloor:
+context Room inv deriveFloor:
+    self.floor = self.number /100
     -- The floor number correspond to the first digits of the room
     -- number, where the last two digits are removed. For instance the
     -- room 634 is at the floor 6.
 
 
 -------------------------------------------------------------------------------
---                             deriveIsOnTheLanding
+--  DOESNT WORK                           deriveIsOnTheLanding
 -------------------------------------------------------------------------------
 -- Derivation of isOnTheLanding attribute.
 -- Easy
-
--- context Bathroom inv deriveIsOnTheLanding:
+--context Bathroom inv deriveIsOnTheLanding:
+ --derive:
+   -- if self.bedroom->isEmpty() then
+     --   self.isOnTheLanding = true
+   -- else
+     --   self.isOnTheLanding = false
+    --endif
     -- A bathroom is said to be on the landing if it is not in a
     -- bedroom.
 
