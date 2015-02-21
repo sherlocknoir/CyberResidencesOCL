@@ -181,7 +181,7 @@ context Resident inv adultMarried:
 
 
 -------------------------------------------------------------------------------
---    DONE                             adultTenant
+--    DONE ko:ok                             adultTenant
 -------------------------------------------------------------------------------
 -- Tenants are adults.
 -- Easy
@@ -215,7 +215,7 @@ context Bedroom inv atLeastABed:
 
 
 -------------------------------------------------------------------------------
---   DONE                            atLeastOneAdult
+--   DONE  KO:OK                           atLeastOneAdult
 -------------------------------------------------------------------------------
 -- At least one adult per room.
 -- Easy. Use 'implies'
@@ -226,7 +226,7 @@ context Bedroom inv atLeastOneAdult:
 
 
 -------------------------------------------------------------------------------
---      DONE                         childNonSmoking
+--      DONE KO:OK                        childNonSmoking
 -------------------------------------------------------------------------------
 -- Non smoking child.
 -- Easy
