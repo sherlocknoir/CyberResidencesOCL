@@ -5,3 +5,31 @@
 
 -- open -q <BASE>.soil
 -- here some mutation code
+
+! create G250_paul : Tenant
+! set G250_paul.name := 'Paul Bismut'
+! set G250_paul.age := 26
+! set G250_paul.gender := #male
+! set G250_paul.isSmoker := true
+! set G250_paul.paidRate := 100.5
+
+! create G250_carol : Tenant
+! set G250_carol.name := 'Carol Smith'
+! set G250_carol.age := 18
+! set G250_carol.gender := #female
+! set G250_carol.isSmoker := false
+! set G250_carol.paidRate := 100
+
+
+! create G250_tom : Tenant
+! set G250_tom.name := 'Tom Smith'
+! set G250_tom.age := 20
+! set G250_tom.gender := #male
+! set G250_tom.isSmoker := false
+! set G250_tom.paidRate := 0
+
+
+! insert (G250_tom,G250_carol) into IsMarriedWith
+
+! insert (G250_carol,G250_tom) into IsMarriedWith
+check

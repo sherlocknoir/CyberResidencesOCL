@@ -170,13 +170,13 @@ constraints
 
 
 -------------------------------------------------------------------------------
---         DONE                        adultMarried
+--         DONE    KO:OK                    adultMarried
 -------------------------------------------------------------------------------
 -- Only adult married.
 -- Easy. Use 'implies'
 
 context Resident inv adultMarried:
-    self.consort -> notEmpty implies self.age > 18
+    self.consort -> notEmpty implies self.age >= 18
     -- To be registered as married, resident must be adult.
 
 
@@ -324,7 +324,7 @@ context Bathroom inv deriveIsOnTheLanding:
 
 
 -------------------------------------------------------------------------------
---   DONE                            deriveNbOfUnits
+--   DONE   doesnt work?                         deriveNbOfUnits
 -------------------------------------------------------------------------------
 -- Derivation of nbOfUnits attribute.
 -- Easy
@@ -420,7 +420,7 @@ context Rent inv labelUnique:
 
 
 -------------------------------------------------------------------------------
---  DONE                         marriageAntiReflexivity
+--  DONE   KO:OK                      marriageAntiReflexivity
 -------------------------------------------------------------------------------
 -- Anti-reflexivity of marriage relationship.
 -- Easy
@@ -442,7 +442,7 @@ context Resident inv marriageAntiReflexivity:
 
 
 -------------------------------------------------------------------------------
---     DONE                          marriageSymmetry
+--     DONE   KO OK                       marriageSymmetry
 -------------------------------------------------------------------------------
 -- Symmetry of marriage relationship.
 -- Easy

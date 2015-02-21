@@ -5,3 +5,45 @@
 
 -- open -q <BASE>.soil
 -- here some mutation code
+
+! create G250_clairebad : Resident
+! set G250_clairebad.name := 'Claire Smith'
+! set G250_clairebad.age := 5
+! set G250_clairebad.gender := #female
+! set G250_clairebad.isSmoker := false
+
+
+
+! create G250_timmybad : Resident
+! set G250_timmybad.name := 'Timmy Smith'
+! set G250_timmybad.age := 6
+! set G250_timmybad.gender := #male
+! set G250_timmybad.isSmoker := false
+
+! create G250_paul : Tenant
+! set G250_paul.name := 'Paul Bismut'
+! set G250_paul.age := 26
+! set G250_paul.gender := #male
+! set G250_paul.isSmoker := true
+! set G250_paul.paidRate := 100.5
+
+! create G250_carol : Tenant
+! set G250_carol.name := 'Carol Smith'
+! set G250_carol.age := 18
+! set G250_carol.gender := #female
+! set G250_carol.isSmoker := false
+! set G250_carol.paidRate := 100
+
+
+! create G250_tom : Tenant
+! set G250_tom.name := 'Tom Smith'
+! set G250_tom.age := 20
+! set G250_tom.gender := #male
+! set G250_tom.isSmoker := false
+! set G250_tom.paidRate := 0
+
+! insert (G250_clairebad,G250_timmybad) into IsMarriedWith
+! insert (G250_tom,G250_carol) into IsMarriedWith
+! insert (G250_paul,G250_paul) into IsMarriedWith
+! insert (G250_carol,G250_tom) into IsMarriedWith
+check
