@@ -524,12 +524,13 @@ context Bedroom inv oooBedroomsNotRented:
 
 
 -------------------------------------------------------------------------------
---                              rentInOneResidence
+--    DONE KO:OK                          rentInOneResidence
 -------------------------------------------------------------------------------
 -- Medium. Should be rather short.
 -- <Enter note text here>
 
--- context Tenant inv rentInOneResidence:
+context Tenant inv rentInOneResidence:
+self.rentedBedrooms->notEmpty() implies self.rentedBedrooms->forAll(b | self.rentedBedrooms->forAll(b2| b2.residence = b.residence))
     -- For a given tenant, all rented bedrooms are in the same
     -- residence.
 
