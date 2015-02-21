@@ -238,7 +238,7 @@ context Bedroom inv atLeastOneAdult:
 
 
 -------------------------------------------------------------------------------
---    DONE                             childTutored
+--    DONE KO:OK                          childTutored
 -------------------------------------------------------------------------------
 -- Child tutored.
 -- Medium
@@ -495,7 +495,7 @@ context Bedroom inv noSquaters:
 -- Easy
 
  context Resident inv noTutorForAdults:
-    self.age >= 18 implies self.tutored->isEmpty()
+    self.age >= 18 implies self.tutors->isEmpty()
     -- Adults never have tutor.
 
 
@@ -611,7 +611,7 @@ context Bedroom inv smokingPrestigePolicy:
 -- Easy
 
 context Resident inv tutorAdult:
-    self.tutors -> notEmpty() implies self.age >= 18
+    self.tutored -> notEmpty() implies self.age >= 18
     
     -- A resident can not be the tutor of another resident if he or
     -- she is not an adult.

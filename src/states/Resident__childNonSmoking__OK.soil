@@ -11,5 +11,4 @@
 ! set G250_claire.age := 5
 ! set G250_claire.gender := #female
 ! set G250_claire.isSmoker := false
-
 check
