@@ -281,7 +281,8 @@ context Rent inv cumulatedDiscounts:
 -- Easy
 
 context Rent inv deriveDiscount:
-  self.discount = self.rate * self.discounts.percentage->sum()
+  self.discount = self.rentedBedrooms.rate * (self.discounts->collect(percentage)->sum())
+  
     -- The discount for a rent, is the rate of the bedroom multiplied
     -- by the sum of percentages of all discounts.
 
@@ -307,7 +308,7 @@ context Room inv deriveFloor:
 
 context Bathroom inv deriveIsOnTheLanding:
  
-    self.isOnTheLanding = self.bedroom->isEmpty()
+    self.isOnTheLanding implies self.bedroom->isEmpty()
     -- A bathroom is said to be on the landing if it is not in a
     -- bedroom.
 
