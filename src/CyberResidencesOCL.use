@@ -287,13 +287,13 @@ context Rent inv deriveDiscount:
 
 
 -------------------------------------------------------------------------------
---  DONE                               deriveFloor
+--  DONE   KO OK                            deriveFloor
 -------------------------------------------------------------------------------
 -- Derivation of the attribute floor.
 -- Easy
 
 context Room inv deriveFloor:
-    self.floor = self.number /100
+    self.floor = self.number div 100
     -- The floor number correspond to the first digits of the room
     -- number, where the last two digits are removed. For instance the
     -- room 634 is at the floor 6.
@@ -324,7 +324,7 @@ context Bathroom inv deriveIsOnTheLanding:
 
 
 -------------------------------------------------------------------------------
---   DONE   doesnt work?                         deriveNbOfUnits
+--   DONE KO: OK                        deriveNbOfUnits
 -------------------------------------------------------------------------------
 -- Derivation of nbOfUnits attribute.
 -- Easy
