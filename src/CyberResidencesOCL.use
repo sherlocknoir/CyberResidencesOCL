@@ -197,7 +197,8 @@ context Resident inv adultMarried:
 -- Invariant about all bathrooms for 'prestige' residence.
 -- Medium. use 'implies'.
 
--- context Residence inv allPrestigeBathrooms:
+context Residence inv allPrestigeBathrooms:
+self.category=Category::prestige implies self.bedrooms()->forAll(b | (b.nbOfSingleBeds+b.nbOfDoubleBeds)<=b.bathrooms->size())
     -- Residences of category prestige have in each bedroom at least
     -- the same number of bathroom than the number of beds.
 
@@ -301,7 +302,7 @@ context Room inv deriveFloor:
 
 
 -------------------------------------------------------------------------------
---  DOESNT WORK                           deriveIsOnTheLanding
+--  DONE KO:OK                          deriveIsOnTheLanding
 -------------------------------------------------------------------------------
 -- Derivation of isOnTheLanding attribute.
 -- Easy
