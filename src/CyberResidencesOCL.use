@@ -479,7 +479,7 @@ context Bedroom inv noEmptyRentedBedrooms:
 
 
 -------------------------------------------------------------------------------
---    DONE NOT TESTED                              noSquaters
+--    DONE KO:OK                             noSquaters
 -------------------------------------------------------------------------------
 -- Nobody in rooms not rented.
 -- Easy. Use 'implies'

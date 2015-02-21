@@ -5,3 +5,45 @@
 
 -- open -q <BASE>.soil
 -- here some mutation code
+! create G250_r1 : Residence
+! set G250_r1.name := 'ouest'
+! set G250_r1.floorMin := 1
+! set G250_r1.floorMax := 3
+! set G250_r1.category := #economy
+! set G250_r1.maxNbOfFreeUnits := 10
+! set G250_r1.avgRate := 2
+
+
+
+! create G250_br1_306 : Bedroom
+! set G250_br1_306.number := 306
+! set G250_br1_306.floor := 3
+! set G250_br1_306.isOutOfOrder := false
+! set G250_br1_306.nbOfSingleBeds := 2
+! set G250_br1_306.nbOfDoubleBeds := 1
+! set G250_br1_306.rate := 20
+! set G250_br1_306.isNonSmoking := false
+! set G250_br1_306.nbOfUnits := 4
+
+
+
+
+! create G250_carol : Tenant
+! set G250_carol.name := 'Carol Smith'
+! set G250_carol.age := 18
+! set G250_carol.gender := #female
+! set G250_carol.isSmoker := false
+! set G250_carol.paidRate := 100
+
+
+
+! insert (G250_r1,G250_r1_303) into ContainsRooms
+
+
+! insert (G250_r1,G250_br1_306) into ContainsRooms
+
+! insert (G250_r1,G250_b1) into ContainsRooms
+
+! insert (G250_br1_306,G250_carol) into IsOccupiedBy
+
+check
