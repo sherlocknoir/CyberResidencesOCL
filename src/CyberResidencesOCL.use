@@ -489,7 +489,7 @@ context Bedroom inv noSquaters:
 
 
 -------------------------------------------------------------------------------
---      DONE                         noTutorForAdults
+--      DONE KO:OK                         noTutorForAdults
 -------------------------------------------------------------------------------
 -- No tutor for adults.
 -- Easy
@@ -605,7 +605,7 @@ context Bedroom inv smokingPrestigePolicy:
 
 
 -------------------------------------------------------------------------------
---   DONE                               tutorAdult
+--   DONE  KO:OK                             tutorAdult
 -------------------------------------------------------------------------------
 -- Tutors are adults.
 -- Easy

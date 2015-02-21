@@ -43,6 +43,6 @@
 ! set G250_timmy.isSmoker := false
 
 ! insert (G250_paul,G250_claire) into IsTutoredBy
-
+! insert (G250_timmy, G250_paul) into IsTutoredBy
 ! insert (G250_r2,G250_br2_106) into ContainsRooms																							
 check
