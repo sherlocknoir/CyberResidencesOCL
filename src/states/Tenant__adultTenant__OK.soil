@@ -20,9 +20,9 @@
 ! set G250_br1_306.isOutOfOrder := false
 ! set G250_br1_306.nbOfSingleBeds := 2
 ! set G250_br1_306.nbOfDoubleBeds := 1
-! set G250_br1_306.rate := 20..0
+! set G250_br1_306.rate := 20.0
 ! set G250_br1_306.isNonSmoking := false
-! set G250_br1_306.nbOfUnits := 3
+! set G250_br1_306.nbOfUnits := 4
 
 
 ! create G250_carol : Tenant
@@ -30,14 +30,13 @@
 ! set G250_carol.age := 18
 ! set G250_carol.gender := #female
 ! set G250_carol.isSmoker := false
-! create G250_tom : Resident
+
 
 
 ! create G250_rent1 : Rent between (G250_br1_306,G250_carol)
 ! set G250_rent1.discount :=25
 ! set G250_rent1.rate :=120
-! insert (G250_r3,G250_br1_306) into ContainsRooms
+! insert (G250_r1,G250_br1_306) into ContainsRooms
 ! insert (G250_br1_306,G250_carol) into IsOccupiedBy
 
 check
-

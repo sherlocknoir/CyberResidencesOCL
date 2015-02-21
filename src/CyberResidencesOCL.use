@@ -102,11 +102,11 @@ end
 
 associationclass Rent
     between
-        Bedroom[1..*]
-        Tenant[0..1]
+        Bedroom[1..*] role rentedBedrooms
+        Tenant[0..1] role tenant
 attributes
-    discount : Real
-    rate : Real
+    discount : Real --@derived
+    rate : Real --@dervided
 end
         
 composition HasDiscounts
@@ -595,12 +595,14 @@ context Bedroom inv smokingPrestigePolicy:
 
 
 -------------------------------------------------------------------------------
---                              tenantInRentedRoom
+--   DONE KO :OK                           tenantInRentedRoom
 -------------------------------------------------------------------------------
 -- Room occupied by the tenant.
 -- Medium. 
 
--- context Tenant inv tenantInRentedRoom:
+context Tenant inv tenantInRentedRoom:
+ self.rentedBedrooms->notEmpty() implies self.rentedBedrooms->exists(r|r.occupants->exists(o|o =self))
+  
     -- A tenant occupies one of the bedroom that he or she has rented.
 
 
