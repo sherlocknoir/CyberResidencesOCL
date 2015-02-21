@@ -384,7 +384,7 @@ self.nbOfUnits = self.nbOfSingleBeds + (2*nbOfDoubleBeds)
 
 
 -------------------------------------------------------------------------------
---  DONE                          floorBetweenMinAndMax
+--  DONE  KO:OK                        floorBetweenMinAndMax
 -------------------------------------------------------------------------------
 -- Floor between minimum and maximum floors.
 -- Easy
