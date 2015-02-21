@@ -502,13 +502,13 @@ context Bedroom inv noSquaters:
 
 
 -------------------------------------------------------------------------------
---  DONE NOT TESTED            oooBedroomsNotRented
+--  DONE KO:OK           oooBedroomsNotRented
 -------------------------------------------------------------------------------
 -- No rental of Out Of Order bedrooms.
 -- Easy
 
 context Bedroom inv oooBedroomsNotRented:
-    self.isOutOfOrder implies self.tenant = Undefined
+    self.isOutOfOrder implies self.tenant = Undefined or self.tenant->isEmpty()
     -- Bedrooms that are out of order cannot be rented.
 
 
