@@ -199,11 +199,11 @@ context Resident inv adultMarried:
 
 -- context Residence inv allPrestigeBathrooms:
     -- Residences of category prestige have in each bedroom at least
-    -- the same number of bathroom that the number of beds.
+    -- the same number of bathroom than the number of beds.
 
 
 -------------------------------------------------------------------------------
---   DONE                              atLeastABed
+--   DONE    KO:OK                          atLeastABed
 -------------------------------------------------------------------------------
 -- At least one bed for useful bedrooms.
 -- Easy. Use implies.
