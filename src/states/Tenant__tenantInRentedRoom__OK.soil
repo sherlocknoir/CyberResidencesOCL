@@ -114,9 +114,6 @@
 ! insert (G250_br1_306,G250_carol) into IsOccupiedBy
 ! insert (G250_br2_106,G250_timmy) into IsOccupiedBy
 ! insert (G250_br2_106,G250_paul) into IsOccupiedBy
-! insert (G250_tom,G250_carol) into IsMarriedWith
-! insert (G250_carol,G250_tom) into IsMarriedWith
-! insert (G250_paul,G250_claire) into IsTutoredBy
-! insert (G250_paul,G250_timmy) into IsTutoredBy
+
 
 check

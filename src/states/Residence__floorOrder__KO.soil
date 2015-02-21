@@ -5,3 +5,13 @@
 
 -- open -q <BASE>.soil
 -- here some mutation code
+
+! create G250_r1 : Residence
+! set G250_r1.name := 'ouest'
+! set G250_r1.floorMin := 3
+! set G250_r1.floorMax := 1
+! set G250_r1.category := #economy
+! set G250_r1.maxNbOfFreeUnits := 10
+! set G250_r1.avgRate := 2
+
+check
