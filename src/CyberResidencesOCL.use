@@ -198,7 +198,7 @@ context Resident inv adultMarried:
 -- Medium. use 'implies'.
 
 context Residence inv allPrestigeBathrooms:
-self.category=Category::prestige implies self.bedrooms()->forAll(b | (b.nbOfSingleBeds+b.nbOfDoubleBeds)<=b.bathrooms->size())
+self.category=Category::prestige and self.bedrooms()->notEmpty() implies self.bedrooms()->forAll(b | (b.nbOfSingleBeds+b.nbOfDoubleBeds)<=b.bathrooms->size())
     -- Residences of category prestige have in each bedroom at least
     -- the same number of bathroom than the number of beds.
 
@@ -538,7 +538,7 @@ self.rentedBedrooms->notEmpty() implies self.rentedBedrooms->forAll(b | self.ren
 
 
 -------------------------------------------------------------------------------
---      Done                       sameNumberIfPrivate
+--      Done   KO:OK                    sameNumberIfPrivate
 -------------------------------------------------------------------------------
 -- Same number if private.
 -- Easy. Use 'implies'.
