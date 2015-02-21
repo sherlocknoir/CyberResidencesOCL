@@ -210,7 +210,7 @@ context Resident inv adultMarried:
 
 context Bedroom inv atLeastABed:
        not self.isOutOfOrder  implies
-        nbOfSingleBeds > 0 or nbOfDoubleBeds > 0
+        self.nbOfSingleBeds > 0 or self.nbOfDoubleBeds > 0
     -- Bedrooms that are not out of order must have at least one bed.
 
 
@@ -221,7 +221,7 @@ context Bedroom inv atLeastABed:
 -- Easy. Use 'implies'
 
 context Bedroom inv atLeastOneAdult:
-   self.occupants -> notEmpty() implies self.occupants->select(age > 18) ->notEmpty()
+   self.occupants -> notEmpty() implies self.occupants->select(age >= 18) ->notEmpty()
     -- At least one adult must be presented in all occupied rooms.
 
 
@@ -233,7 +233,7 @@ context Bedroom inv atLeastOneAdult:
 
 
  context Resident inv childNonSmoking:
-  self.age < 18 implies self.isSmoker = false
+  self.age < 18 implies not self.isSmoker 
     -- Children are always declared as non smoker.
 
 
@@ -244,7 +244,7 @@ context Bedroom inv atLeastOneAdult:
 -- Medium
 
  context Resident inv childTutored:
-    self.occupiedRoom.residence.category <> Category:: prestige and self.age < 18 implies self.tutors->notEmpty
+    self.occupiedRoom.residence.category <> Category:: prestige and self.age < 18 implies self.tutors->notEmpty()
 
     -- Resident that are less than 18 years old must have at least one
     -- tutor, apart in prestige residences where this rule does not
@@ -252,7 +252,7 @@ context Bedroom inv atLeastOneAdult:
 
 
 -------------------------------------------------------------------------------
---   DONE                           cumulatedDiscounts
+--   DONE  check this                         cumulatedDiscounts
 -------------------------------------------------------------------------------
 -- Limit of cumulated discounts.
 -- Easy. Use 'sum'
@@ -304,13 +304,10 @@ context Room inv deriveFloor:
 -------------------------------------------------------------------------------
 -- Derivation of isOnTheLanding attribute.
 -- Easy
---context Bathroom inv deriveIsOnTheLanding:
- --derive:
-   -- if self.bedroom->isEmpty() then
-     --   self.isOnTheLanding = true
-   -- else
-     --   self.isOnTheLanding = false
-    --endif
+
+context Bathroom inv deriveIsOnTheLanding:
+ 
+    self.isOnTheLanding = self.bedroom->isEmpty()
     -- A bathroom is said to be on the landing if it is not in a
     -- bedroom.
 
@@ -327,12 +324,13 @@ context Room inv deriveFloor:
 
 
 -------------------------------------------------------------------------------
---                               deriveNbOfUnits
+--   DONE                            deriveNbOfUnits
 -------------------------------------------------------------------------------
 -- Derivation of nbOfUnits attribute.
 -- Easy
 
--- context Bedroom inv deriveNbOfUnits:
+context Bedroom inv deriveNbOfUnits:
+self.nbOfUnits = self.nbOfSingleBeds + (2*nbOfDoubleBeds)
     -- The number of units of a bedroom is the maximum number of
     -- people that can fit within the bedroom assuming that all places
     -- in all beds are full.
@@ -370,7 +368,7 @@ context Room inv deriveFloor:
 -- Easy
 
  context Discount inv domainPercentage:
-        self.percentage > 1 and self.percentage < 100
+        self.percentage >= 1 and self.percentage <= 100
     -- The percentage is a value between 1 and 100.
 
 
@@ -392,8 +390,8 @@ context Room inv deriveFloor:
 -- Easy
 
 context Room inv floorBetweenMinAndMax:
-    self.floor < self.residence.floorMax and 
-    self.floor > self.residence.floorMin
+    self.floor <= self.residence.floorMax and 
+    self.floor >= self.residence.floorMin
     -- The floor of a room is between the minium and maximum floor of
     -- the residence.
 
@@ -479,13 +477,13 @@ context Bedroom inv noEmptyRentedBedrooms:
 
 
 -------------------------------------------------------------------------------
---                                  noSquaters
+--    DONE NOT TESTED                              noSquaters
 -------------------------------------------------------------------------------
 -- Nobody in rooms not rented.
 -- Easy. Use 'implies'
 
 context Bedroom inv noSquaters:
-     self.occupants->notEmpty() implies self.tenant <> Undefined 
+     self.occupants->notEmpty() implies self.tenant <> Undefined or self.tenant->notEmpty() 
     -- Occupants must be exclusively in rooms that are rented by
     -- somebody.
 
@@ -497,7 +495,7 @@ context Bedroom inv noSquaters:
 -- Easy
 
  context Resident inv noTutorForAdults:
-    self.age > 18 implies self.tutored->isEmpty()
+    self.age >= 18 implies self.tutored->isEmpty()
     -- Adults never have tutor.
 
 
@@ -543,7 +541,7 @@ context Bedroom inv oooBedroomsNotRented:
 -- Easy. Use 'implies'.
 
 context Bathroom inv sameNumberIfPrivate:
-self.isOnTheLanding = false implies self.number = self.bedroom.number
+not self.isOnTheLanding implies self.number = self.bedroom.number
     -- All bathrooms that are not on the landing, that is that are
     -- private to a bedroom, have the same number of room as this
     -- bedroom.
@@ -613,7 +611,7 @@ context Bedroom inv smokingPrestigePolicy:
 -- Easy
 
 context Resident inv tutorAdult:
-    self.tutors -> notEmpty implies self.age > 18
+    self.tutors -> notEmpty() implies self.age >= 18
     
     -- A resident can not be the tutor of another resident if he or
     -- she is not an adult.
