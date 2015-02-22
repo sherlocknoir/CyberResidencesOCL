@@ -253,7 +253,7 @@ context Bedroom inv atLeastOneAdult:
 
 
 -------------------------------------------------------------------------------
---   DONE  check this                         cumulatedDiscounts
+--   DONE KO:OK       cumulatedDiscounts
 -------------------------------------------------------------------------------
 -- Limit of cumulated discounts.
 -- Easy. Use 'sum'
@@ -302,7 +302,7 @@ context Room inv deriveFloor:
 
 
 -------------------------------------------------------------------------------
---  DONE KO:OK                          deriveIsOnTheLanding
+--  DONE KO:OK                   deriveIsOnTheLanding
 -------------------------------------------------------------------------------
 -- Derivation of isOnTheLanding attribute.
 -- Easy
@@ -411,7 +411,7 @@ context Room inv floorBetweenMinAndMax:
 
 
 -------------------------------------------------------------------------------
---    DONE NOT TESTED                             labelUnique
+--    DONE KO:OK                    labelUnique
 -------------------------------------------------------------------------------
 -- Uniqueness of labels with respect to rents.
 -- Easy. Use 'unique'
