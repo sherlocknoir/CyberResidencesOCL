@@ -468,13 +468,13 @@ context Resident inv marriageSymmetry:
 
 
 -------------------------------------------------------------------------------
---  DONE NOT TESTED           noEmptyRentedBedrooms
+--  DONE KO:OK          noEmptyRentedBedrooms
 -------------------------------------------------------------------------------
 -- Rented bedrooms not empty.
 -- Easy. Use 'implies'
 
 context Bedroom inv noEmptyRentedBedrooms:
-     self.tenant <> Undefined implies self.occupants->notEmpty()
+     self.tenant <> Undefined or self.tenant->notEmpty() implies self.occupants->notEmpty()
     -- All rented bedrooms are occupied by at least one occupant.
 
 
