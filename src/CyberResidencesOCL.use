@@ -576,12 +576,13 @@ not self.isOnTheLanding implies self.number = self.bedroom.number
 
 
 -------------------------------------------------------------------------------
---                             smokingPremiumPolicy
+--  DONE KO:OK                    smokingPremiumPolicy
 -------------------------------------------------------------------------------
 -- Smoking policy for premium residences.
 -- Not easy
 
--- context Bedroom inv smokingPremiumPolicy:
+context Bedroom inv smokingPremiumPolicy:
+self.residence.category = Category::premium and self.isNonSmoking = false implies self.occupants->forAll(o|o.isSmoker =true)
     -- In a premium residence a resident that specified that he or she
     -- is non smoker will never ever be place in a smoking room.
 
