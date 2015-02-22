@@ -259,7 +259,7 @@ context Bedroom inv atLeastOneAdult:
 -- Easy. Use 'sum'
 
 context Rent inv cumulatedDiscounts:
-    self.discounts.percentage->sum() <= (rate*0.70)
+    self.discounts.percentage->sum() <= 70
     -- No room will have more that 70% of dicounts cumulated.
 
 
