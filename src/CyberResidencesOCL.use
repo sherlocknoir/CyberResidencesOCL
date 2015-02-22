@@ -587,7 +587,7 @@ not self.isOnTheLanding implies self.number = self.bedroom.number
 
 
 -------------------------------------------------------------------------------
---       DONE                     smokingPrestigePolicy
+--       DONE KO:OK                    smokingPrestigePolicy
 -------------------------------------------------------------------------------
 -- No smoking is prestige.
 -- Easy
