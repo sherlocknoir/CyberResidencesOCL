@@ -147,13 +147,30 @@ end
 
 constraints
 
+
+-------------------------------------------------------------------------------
+--   ?????                            aboooPercentage
+-------------------------------------------------------------------------------
+-- Percentage of "ABOOO" discount according to residence category.
+-- Not Easy. Should work with the corresponding invariant 'xxxConditions'
+
+--context Discount inv aboooPercentage:
+    -- ABOO discounts are equal to 50%. 
+
+  --  self.label = 'BROOO50' implies self.percentage = 50
+
+
+
 -------------------------------------------------------------------------------
 --                               aboooConditions
 -------------------------------------------------------------------------------
 -- Conditions for granting a discount "All Bathrooms Out Of Order" (ABOOO).
--- Note Easy. Use 'one'. Should world with 'xxxPercentage'
+-- Not Easy. Use 'one'. Should work with 'xxxPercentage'
 
--- context Rent inv aboooConditions:
+--context Rent inv aboooConditions:
+--self.rentedBedrooms.bathrooms->size() = self.rentedBedrooms.bathrooms.select(----isOutOfOrder = true)->size() and
+ --   self.rentedBedrooms.residence.category <> Category::economy 
+   -- implies self.discounts.one(self.discounts.label = 'BROOO50')
     -- A discount is given for bedrooms that have all bathrooms out of
     -- order. The label of this type of discount is 'BROOO50'. This
     -- rule does not apply in economy residences.
@@ -651,7 +668,7 @@ context Resident inv tutorAdult:
 -- Medium
 
 --context Residence inv uniqueNumberApartForPrivateBathroom:
---self.rooms->forAll(r| r.isUnique(number)
+--self.rooms->isUnique(number)
 --self.bedrooms()->isUnique(number)
 --not self.isOnTheLanding implies self.number = self.bedroom.number
 --self.bathrooms()->forAll(b| bisUnique(number)
