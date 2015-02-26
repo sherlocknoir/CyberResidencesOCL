@@ -44,7 +44,7 @@
 ! set G250_carol.age := 18
 ! set G250_carol.gender := #female
 ! set G250_carol.isSmoker := false
-! set G250_carol.paidRate := 1
+! set G250_carol.paidRate := 1000
 
 ! create G250_D1 : Discount
 ! set G250_D1.percentage := 50
