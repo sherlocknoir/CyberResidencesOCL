@@ -10,8 +10,8 @@
 ! set G250_r1.floorMin := 1
 ! set G250_r1.floorMax := 3
 ! set G250_r1.category := #economy
-! set G250_r1.maxNbOfFreeUnits := 10
-! set G250_r1.avgRate := 2
+! set G250_r1.maxNbOfFreeUnits := 3
+! set G250_r1.avgRate := 0
 
 ! create G250_br1_306 : Bedroom
 ! set G250_br1_306.number := 306
@@ -23,8 +23,6 @@
 ! set G250_br1_306.isNonSmoking := false
 ! set G250_br1_306.nbOfUnits := 3
 
-
 ! insert (G250_r1,G250_br1_306) into ContainsRooms
-
 
 check
