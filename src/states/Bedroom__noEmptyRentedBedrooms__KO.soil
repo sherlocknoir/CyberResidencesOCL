@@ -12,7 +12,7 @@
 ! set G250_r1.floorMax := 3
 ! set G250_r1.category := #economy
 ! set G250_r1.maxNbOfFreeUnits := 4
-! set G250_r1.avgRate := 30
+! set G250_r1.avgRate := 0
 
 ! create G250_r1_303 : Room
 ! set G250_r1_303.number := 303
