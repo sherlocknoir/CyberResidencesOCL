@@ -60,5 +60,3 @@
 ! insert (G250_r2,G250_b4) into ContainsRooms
 ! insert (G250_r2,G250_b5) into ContainsRooms
 check
-
-
