@@ -11,7 +11,7 @@
 ! set G250_r3.floorMin := 0
 ! set G250_r3.floorMax := 10
 ! set G250_r3.category := #premium
-! set G250_r3.maxNbOfFreeUnits := 5
+! set G250_r3.maxNbOfFreeUnits := 1
 ! set G250_r3.avgRate := 4
 
 ! create G250_br3_303 : Bedroom
@@ -35,8 +35,6 @@
 ! set G250_rent3.discount :=0
 ! set G250_rent3.rate :=100
 
-
 ! insert (G250_r3,G250_br3_303) into ContainsRooms
-
 ! insert (G250_br3_303,G250_paul) into IsOccupiedBy
 check
