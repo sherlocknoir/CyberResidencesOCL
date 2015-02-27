@@ -164,16 +164,16 @@
 ! set G250_kitten.paidRate := 0
 ! create G250_D1 : Discount
 ! set G250_D1.percentage := 50
-! set G250_D1.label := 'super'
+! set G250_D1.label := 'SBOOO'
 ! create G250_D2 : Discount
 ! set G250_D2.percentage := 20
-! set G250_D2.label := 'holiday'
+! set G250_D2.label := 'SBOOO'
 ! create G250_D3 : Discount
 ! set G250_D3.percentage := 25
-! set G250_D3.label := 'SBOO'
+! set G250_D3.label := 'SBOOO'
 ! create G250_D4 : Discount
 ! set G250_D4.percentage := 50
-! set G250_D4.label := 'BROOO50'
+! set G250_D4.label := 'SBOOO'
 ! create G250_rent1 : Rent between (G250_br1_306,G250_carol)
 ! set G250_rent1.discount :=70
 ! set G250_rent1.rate :=30

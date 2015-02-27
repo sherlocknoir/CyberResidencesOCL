@@ -582,7 +582,7 @@ not self.isOnTheLanding implies self.number = self.bedroom.number
 
 
 -------------------------------------------------------------------------------
---    DONE but ko doesnt fail                      sboooConditions
+--    DONE OK KO                     sboooConditions
 -------------------------------------------------------------------------------
 -- Conditions for granting a discount "Some Bathrooms Out Of Order" (SBOOO).
 -- Not Easy. Use 'one'. Should world with 'xxxPercentage'
@@ -594,11 +594,13 @@ context Rent inv sboooConditions:
     -- label for this type of discount is SBOO. This type of discount
     -- does not apply on economy residences.
     
-    self.rentedBedrooms.bathrooms->size() >= 2
+    self.discounts->one(label = 'SBOOO')
+    implies 
+    (self.rentedBedrooms.bathrooms->size() >= 2
     and self.rentedBedrooms.bathrooms.isOutOfOrder->size() >=1
     and self.rentedBedrooms.bathrooms.isOutOfOrder->size() < self.rentedBedrooms.bathrooms->size()
-    and self.rentedBedrooms.residence.category <> Category::economy 
-    implies self.discounts->one(label = 'SBOO')
+    and self.rentedBedrooms.residence.category <> Category::economy )
+    
 
 -------------------------------------------------------------------------------
 --   DONE but KO doesnt fail                           sboooPercentage
