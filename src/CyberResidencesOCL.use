@@ -149,7 +149,7 @@ constraints
 
 
 -------------------------------------------------------------------------------
---                           aboooConditions
+--  DONE KO:OK                         aboooConditions
 -------------------------------------------------------------------------------
 -- Conditions for granting a discount "All Bathrooms Out Of Order" (ABOOO).
 -- Note Easy. Use 'one'. Should work with 'xxxPercentage'
@@ -165,7 +165,7 @@ constraints
 
 
 -------------------------------------------------------------------------------
---                              aboooPercentage
+--   DONE KO:OK                           aboooPercentage
 -------------------------------------------------------------------------------
 -- Percentage of "ABOOO" discount according to residence category.
 -- Not Easy. Should work with the corresponding invariant 'xxxConditions'
@@ -176,7 +176,7 @@ context Discount inv aboooPercentage:
     self.label = 'BROOO50' implies self.percentage = 50
 
 -------------------------------------------------------------------------------
---         DONE    KO:OK                    adultMarried
+--     DONE    KO:OK                    adultMarried
 -------------------------------------------------------------------------------
 -- Only adult married.
 -- Easy. Use 'implies'
@@ -187,7 +187,7 @@ context Resident inv adultMarried:
 
 
 -------------------------------------------------------------------------------
---    DONE ko:ok                             adultTenant
+--    DONE ko:ok                          adultTenant
 -------------------------------------------------------------------------------
 -- Tenants are adults.
 -- Easy
@@ -349,7 +349,7 @@ self.nbOfUnits = self.nbOfSingleBeds + (2*nbOfDoubleBeds)
 
 
 -------------------------------------------------------------------------------
---                                derivePaidRate
+--     DOESNT work                          derivePaidRate
 -------------------------------------------------------------------------------
 -- Derivation of the attribute paidRate.
 -- Not Easy. Use 'if ... then ... else ... endif'   and
@@ -392,7 +392,7 @@ context Rent inv deriveRate:
 
 
 -------------------------------------------------------------------------------
---      DOESNT WORK                    enoughBathroomsInPrestige
+--    DONE KO:OK                    enoughBathroomsInPrestige
 -------------------------------------------------------------------------------
 -- At least as many bathrooms as beds for prestige residence.
 -- Easy. Use implies.
@@ -455,7 +455,7 @@ context Resident inv marriageAntiReflexivity:
 
 
 -------------------------------------------------------------------------------
---                             marriageInSameGroup
+--   DONE KO:OK                          marriageInSameGroup
 -------------------------------------------------------------------------------
 -- Consorts in the same group.
 -- Medium
@@ -539,7 +539,7 @@ context Bedroom inv oooBedroomsNotRented:
 
 
 -------------------------------------------------------------------------------
---                                oooIfPrestige
+--     DONE KO:KO                           oooIfPrestige
 -------------------------------------------------------------------------------
 -- Out of order bathroom implications if prestige. 
 -- Medium. Use 'implies'
@@ -581,7 +581,7 @@ not self.isOnTheLanding implies self.number = self.bedroom.number
 
 
 -------------------------------------------------------------------------------
---                               sboooConditions
+--    DONE but ko doesnt fail                      sboooConditions
 -------------------------------------------------------------------------------
 -- Conditions for granting a discount "Some Bathrooms Out Of Order" (SBOOO).
 -- Not Easy. Use 'one'. Should world with 'xxxPercentage'
@@ -600,7 +600,7 @@ context Rent inv sboooConditions:
     implies self.discounts->one(label = 'SBOO')
 
 -------------------------------------------------------------------------------
---                               sboooPercentage
+--   DONE but KO doesnt fail                           sboooPercentage
 -------------------------------------------------------------------------------
 -- Percentage of "SBOOO" discount according to residence category.
 -- Not Easy. Should work with the corresponding invariant 'xxxConditions'
@@ -660,7 +660,7 @@ context Resident inv tutorAdult:
 
 
 -------------------------------------------------------------------------------
---                               tutorInSameGroup
+--    DONE KO:OK                           tutorInSameGroup
 -------------------------------------------------------------------------------
 -- Tutors and tutored in one group.
 -- Medium
@@ -672,7 +672,7 @@ context Resident inv tutorInSameGroup:
     self.tutored-> forAll(t | t.occupiedRoom.tenant = self.occupiedRoom.tenant)
 
 -------------------------------------------------------------------------------
---   Doesnt work         uniqueNumberApartForPrivateBathroom
+--   DONE KO:OK        uniqueNumberApartForPrivateBathroom
 -------------------------------------------------------------------------------
 -- Invariant on room numbering.
 -- Medium
