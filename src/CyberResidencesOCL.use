@@ -147,6 +147,7 @@ end
 
 constraints
 
+
 -------------------------------------------------------------------------------
 --                           aboooConditions
 -------------------------------------------------------------------------------
@@ -196,7 +197,7 @@ context Resident inv adultMarried:
 
 
 -------------------------------------------------------------------------------
---    DONE KO:OK                         allPrestigeBathrooms
+--    DONE KO:OK           allPrestigeBathrooms
 -------------------------------------------------------------------------------
 -- Invariant about all bathrooms for 'prestige' residence.
 -- Medium. use 'implies'.
@@ -268,30 +269,28 @@ context Rent inv cumulatedDiscounts:
 
 
 -------------------------------------------------------------------------------
---                                deriveAvgRate
+--     DONE KO:OK                 deriveAvgRate
 -------------------------------------------------------------------------------
 -- Derivation of the avgRate attribute.
 -- Medium
 
 context Residence inv deriveAvgRate:
+(self.bedrooms().occupants->size() = 0) implies self. avgRate = 0
+or self.avgRate =self.bedrooms()->select(rent->notEmpty).rent.rate->sum()
+ / (self.bedrooms().occupants->select(tutors->isEmpty())->size())
     -- The average rate of a residence is the total revenue of the
     -- residence divided by the number of occupants. Tutored residents
     -- do not count in this rule.
 
-    (self.bedrooms()->isEmpty() or 
-        (self.bedrooms()->notEmpty() and self.bedrooms()->select(rent->notEmpty())->isEmpty()) implies 
-    self.avgRate = 0) and 
-    (self.bedrooms()->notEmpty() and self.bedrooms()->select(rent->notEmpty())->notEmpty() implies 
-    self.avgRate = self.bedrooms()->select(rent->notEmpty())->collect(rent.rate)->sum() / self.bedrooms().collect(occupants)->select(tutored->isEmpty())->size())
 
 -------------------------------------------------------------------------------
---  DONE NOT TESTED                              deriveDiscount
+--  DONE KO:OK                            deriveDiscount
 -------------------------------------------------------------------------------
 -- Derivation of the attribute discount.
 -- Easy
 
 context Rent inv deriveDiscount:
-  self.discount = self.rentedBedrooms.rate * (self.discounts->collect(percentage)->sum())
+ self.discount = self.rentedBedrooms.rate*(self.discounts.percentage->sum() / 100)
   
     -- The discount for a rent, is the rate of the bedroom multiplied
     -- by the sum of percentages of all discounts.
@@ -324,17 +323,16 @@ context Bathroom inv deriveIsOnTheLanding:
 
 
 -------------------------------------------------------------------------------
---                           deriveMaxNbOfFreeUnits
+--  DONE KO: OK                         deriveMaxNbOfFreeUnits
 -------------------------------------------------------------------------------
 -- Derivation of maxNbOfFreeUnits attribute.
 -- Easy
 
 context Residence inv deriveMaxNbOfFreeUnits:
+self.maxNbOfFreeUnits = self.bedrooms().nbOfUnits->sum() 
     -- The maximum number of free units is equal to the maximum number
     -- of places in beds of all rooms of the residence.
 
-    self.maxNbOfFreeUnits = self.bedrooms().nbOfSingleBeds->sum()
-    + self.bedrooms().nbOfDoubleBeds->sum() * 2
 
 -------------------------------------------------------------------------------
 --   DONE KO: OK                        deriveNbOfUnits
@@ -356,7 +354,7 @@ self.nbOfUnits = self.nbOfSingleBeds + (2*nbOfDoubleBeds)
 -- Not Easy. Use 'if ... then ... else ... endif'   and
 -- 'let groupFloors : Set(Integer) = ... in ...'
 
-context Tenant inv derivePaidRate:
+--context Tenant inv derivePaidRate:
     -- The total amount paid by a tenant is the sum of rent rates for
     -- all bedrooms rented. If the members of his or her group is
     -- spread over more than one floor, then 20€ of reduction will
@@ -370,15 +368,16 @@ context Tenant inv derivePaidRate:
 
 
 -------------------------------------------------------------------------------
---                                  deriveRate
+--    DONE ko:oK                            deriveRate
 -------------------------------------------------------------------------------
 -- Derivation of the attribute rate.
 -- Easy
 
 context Rent inv deriveRate:
+ self.rate = self.rentedBedrooms.rate-self.discount
     -- The rate of a rent corresponds to the regular rate for the room
     -- minus the discount.
-self.rate = self.rentedBedrooms.rate - self.discount
+
 
 -------------------------------------------------------------------------------
 --      DONE   KO:OK                      domainPercentage
@@ -392,16 +391,19 @@ self.rate = self.rentedBedrooms.rate - self.discount
 
 
 -------------------------------------------------------------------------------
---                          enoughBathroomsInPrestige
+--      DOESNT WORK                    enoughBathroomsInPrestige
 -------------------------------------------------------------------------------
 -- At least as many bathrooms as beds for prestige residence.
 -- Easy. Use implies.
 
 context Bedroom inv enoughBathroomsInPrestige:
+--self.residence.category=Category::prestige implies 
+--self.residence.bathrooms()->collect(isOnTheLanding=false)->size()>=(self.nbOfSingleBeds+self.nbOfDoubleBeds)
+self.residence.category=Category::prestige  implies self.residence.bedrooms()->forAll(b | (b.nbOfSingleBeds+b.nbOfDoubleBeds)<=self.bathrooms->size())
     -- In a prestige residence, the number of private bathrooms is at
     -- least the same as the number of beds in each bedroom.
-    self.residence.category = Category::economy 
-    implies self.bathrooms->size() >= self.nbOfSingleBeds + self.nbOfDoubleBeds
+   -- self.residence.category = Category::economy 
+    --implies self.bathrooms->size() >= self.nbOfSingleBeds + self.nbOfDoubleBeds
 
 
 -------------------------------------------------------------------------------
@@ -478,17 +480,17 @@ context Resident inv marriageSymmetry:
 
 
 -------------------------------------------------------------------------------
---                              noBedroomOverload
+--  DONE KO:OK                          noBedroomOverload
 -------------------------------------------------------------------------------
 -- No bedroom overloaded.
 -- Medium
 
 context Bedroom inv noBedroomOverload:
-    -- There must be no more people in a bedroom that the number of
+ self.occupants->select(age > 3)->size() <= self.nbOfUnits
+    -- There must be no more people in a bedroom than the number of
     -- units of this bedroom. Children up to 3 years old are not
     -- counted in this rule.
 
-    self.nbOfUnits >= self.occupants->reject(age < 3)->size()
 
 -------------------------------------------------------------------------------
 --  DONE KO:OK          noEmptyRentedBedrooms
@@ -670,13 +672,13 @@ context Resident inv tutorAdult:
 -- Medium
 
 context Resident inv tutorInSameGroup:
-    -- The tutors of a resident are in the same group that this
+    -- The tutors of a resident are in the same group as this
     -- resident. In other words they are all in the same group of
     -- rooms.
     self.tutored-> forAll(t | t.occupiedRoom.tenant = self.occupiedRoom.tenant)
 
 -------------------------------------------------------------------------------
---                     uniqueNumberApartForPrivateBathroom
+--   Doesnt work         uniqueNumberApartForPrivateBathroom
 -------------------------------------------------------------------------------
 -- Invariant on room numbering.
 -- Medium
