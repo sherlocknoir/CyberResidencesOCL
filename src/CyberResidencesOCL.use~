@@ -148,7 +148,7 @@ end
 constraints
 
 -------------------------------------------------------------------------------
---     ########## work with xxxPercentage                          aboooConditions
+--                           aboooConditions
 -------------------------------------------------------------------------------
 -- Conditions for granting a discount "All Bathrooms Out Of Order" (ABOOO).
 -- Note Easy. Use 'one'. Should work with 'xxxPercentage'
@@ -163,7 +163,7 @@ constraints
     implies self.discounts->one(label = 'BROOO50')
 
 -------------------------------------------------------------------------------
---   ###########                            aboooPercentage
+--                              aboooPercentage
 -------------------------------------------------------------------------------
 -- Percentage of "ABOOO" discount according to residence category.
 -- Not Easy. Should work with the corresponding invariant 'xxxConditions'
@@ -268,7 +268,7 @@ context Rent inv cumulatedDiscounts:
 
 
 -------------------------------------------------------------------------------
---        #########                        deriveAvgRate
+--                                deriveAvgRate
 -------------------------------------------------------------------------------
 -- Derivation of the avgRate attribute.
 -- Medium
@@ -356,17 +356,17 @@ self.nbOfUnits = self.nbOfSingleBeds + (2*nbOfDoubleBeds)
 -- Not Easy. Use 'if ... then ... else ... endif'   and
 -- 'let groupFloors : Set(Integer) = ... in ...'
 
-context Tenant inv derivePaidRate:
+--context Tenant inv derivePaidRate:
     -- The total amount paid by a tenant is the sum of rent rates for
     -- all bedrooms rented. If the members of his or her group is
     -- spread over more than one floor, then 20€ of reduction will
     -- automatically be deduced.
-if let groupFloors : Set(Integer) = self.rentedBedrooms.floor->asSet(), oneFloor : Integer = 1 in (groupFloors->size()) > oneFloor 
-then
-    self.paidRate = self.rentedBedrooms.rate->sum() - 20
-else
-    self.paidRate = self.rentedBedrooms.rate->sum()
-endif
+--if let groupFloors : Set(Integer) = self.rentedBedrooms.floor->asSet(), oneFloor : Integer = 1 in (groupFloors->size()) > oneFloor 
+--then
+  --  self.paidRate = self.rentedBedrooms.rate->sum() - 20
+--else
+ --   self.paidRate = self.rentedBedrooms.rate->sum()
+--endif
 
 
 -------------------------------------------------------------------------------
