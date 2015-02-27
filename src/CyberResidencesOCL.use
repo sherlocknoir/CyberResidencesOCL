@@ -159,9 +159,10 @@ constraints
     -- order. The label of this type of discount is 'BROOO50'. This
     -- rule does not apply in economy residences.
 
-    self.rentedBedrooms.bathrooms->size() = self.rentedBedrooms.bathrooms.select(isOutOfOrder = true)->size() and
-    self.rentedBedrooms.residence.category <> Category::economy 
+    (self.rentedBedrooms.bathrooms.select(isOutOfOrder = true)->size()>0 and
+    self.rentedBedrooms.residence.category <> Category::economy)
     implies self.discounts->one(label = 'BROOO50')
+
 
 -------------------------------------------------------------------------------
 --                              aboooPercentage
@@ -607,16 +608,9 @@ context Rent inv sboooConditions:
 context Discount inv sboooPercentage:
     -- In premium residences, SBOO discounts are equal to 25%. For
     -- standard category the discount is of 10%.
-    self.label = 'SBOOO' and
-    (
-        (self.rent.rentedBedrooms.residence.category = Category::premium
-        implies
-        self.percentage = 25)
-        or
-        (self.rent.rentedBedrooms.residence.category = Category::standard
-        implies
-        self.percentage = 10)
-    )
+    (self.label = 'SBOOO' and self.rent.rentedBedrooms.residence.category = Category::premium  implies self.percentage = 25)
+    or
+    (self.label = 'SBOOO' and self.rent.rentedBedrooms.residence.category = Category::standard implies self.percentage = 10)
 -------------------------------------------------------------------------------
 --  DONE KO:OK                    smokingPremiumPolicy
 -------------------------------------------------------------------------------
