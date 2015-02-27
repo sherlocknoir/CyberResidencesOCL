@@ -12,118 +12,45 @@
 ! set G250_r1.floorMin := 1
 ! set G250_r1.floorMax := 3
 ! set G250_r1.category := #economy
-! set G250_r1.maxNbOfFreeUnits := 10
-! set G250_r1.avgRate := 2
-! create G250_r2 : Residence
-! set G250_r2.name := 'west'
-! set G250_r2.floorMin := 0
-! set G250_r2.floorMax := 10
-! set G250_r2.category := #prestige
-! set G250_r2.maxNbOfFreeUnits := 5
-! set G250_r2.avgRate := 4
-! create G250_r3 : Residence
-! set G250_r3.name := 'east'
-! set G250_r3.floorMin := 0
-! set G250_r3.floorMax := 10
-! set G250_r3.category := #prestige
-! set G250_r3.maxNbOfFreeUnits := 5
-! set G250_r3.avgRate := 4
+! set G250_r1.maxNbOfFreeUnits := 4
+! set G250_r1.avgRate := 0
+
+
 ! create G250_r1_303 : Room
 ! set G250_r1_303.number := 303
 ! set G250_r1_303.floor := 3
 ! set G250_r1_303.isOutOfOrder := false
-! create G250_r3_303 : Room
-! set G250_r3_303.number := 303
-! set G250_r3_303.floor := 3
-! set G250_r3_303.isOutOfOrder := false
 ! create G250_br1_306 : Bedroom
 ! set G250_br1_306.number := 306
 ! set G250_br1_306.floor := 3
 ! set G250_br1_306.isOutOfOrder := false
 ! set G250_br1_306.nbOfSingleBeds := 2
 ! set G250_br1_306.nbOfDoubleBeds := 1
-! set G250_br1_306.rate := 120
+! set G250_br1_306.rate := 0
 ! set G250_br1_306.isNonSmoking := false
 ! set G250_br1_306.nbOfUnits := 4
-! create G250_br2_106 : Bedroom
-! set G250_br2_106.number := 106
-! set G250_br2_106.floor := 1
-! set G250_br2_106.isOutOfOrder := false
-! set G250_br2_106.nbOfSingleBeds := 1
-! set G250_br2_106.nbOfDoubleBeds := 1
-! set G250_br2_106.rate := 100
-! set G250_br2_106.isNonSmoking := true
-! set G250_br2_106.nbOfUnits := 3
-! create G250_br2_206 : Bedroom
-! set G250_br2_206.number := 106
-! set G250_br2_206.floor := 1
-! set G250_br2_206.isOutOfOrder := false
-! set G250_br2_206.nbOfSingleBeds := 0
-! set G250_br2_206.nbOfDoubleBeds := 1
-! set G250_br2_206.rate := 100
-! set G250_br2_206.isNonSmoking := true
-! set G250_br2_206.nbOfUnits := 2
-! create G250_claire : Resident
-! set G250_claire.name := 'Claire Smith'
-! set G250_claire.age := 5
-! set G250_claire.gender := #female
-! set G250_claire.isSmoker := false
-! create G250_timmy : Resident
-! set G250_timmy.name := 'Timmy Smith'
-! set G250_timmy.age := 6
-! set G250_timmy.gender := #male
-! set G250_timmy.isSmoker := false
-! create G250_paul : Tenant
-! set G250_paul.name := 'Paul Bismut'
-! set G250_paul.age := 26
-! set G250_paul.gender := #male
-! set G250_paul.isSmoker := true
-! set G250_paul.paidRate := 100.5
-! create G250_carol : Tenant
-! set G250_carol.name := 'Carol Smith'
-! set G250_carol.age := 18
-! set G250_carol.gender := #female
-! set G250_carol.isSmoker := false
-! set G250_carol.paidRate := 100
-! create G250_tom : Tenant
-! set G250_tom.name := 'Tom Smith'
-! set G250_tom.age := 20
-! set G250_tom.gender := #male
-! set G250_tom.isSmoker := false
-! set G250_tom.paidRate := 0
+
+
 ! create G250_b1 : Bathroom
 ! set G250_b1.number := 345
 ! set G250_b1.floor := 3
 ! set G250_b1.isOutOfOrder := false
 ! set G250_b1.isOnTheLanding := true
+
 ! create G250_b2 : Bathroom
-! set G250_b2.number := 305
+! set G250_b2.number := 300
 ! set G250_b2.floor := 3
 ! set G250_b2.isOutOfOrder := false
 ! set G250_b2.isOnTheLanding := false
-! create G250_D1 : Discount
-! set G250_D1.percentage := 50
-! set G250_D1.label := 'super'
-! create G250_rent1 : Rent between (G250_br1_306,G250_carol)
-! set G250_rent1.discount :=25
-! set G250_rent1.rate :=120
-! create G250_rent2 : Rent between (G250_br2_106,G250_paul)
-! set G250_rent2.discount :=25
-! set G250_rent2.rate :=100
+
+
+
 ! insert (G250_r1,G250_r1_303) into ContainsRooms
-! insert (G250_r2,G250_br2_106) into ContainsRooms
-! insert (G250_r3,G250_r3_303) into ContainsRooms
+
 ! insert (G250_r1,G250_br1_306) into ContainsRooms
-! insert (G250_r2,G250_br2_206) into ContainsRooms
 ! insert (G250_r1,G250_b1) into ContainsRooms
 ! insert (G250_r1,G250_b2) into ContainsRooms
-! insert (G250_rent1,G250_D1) into HasDiscounts
-! insert (G250_br1_306,G250_carol) into IsOccupiedBy
-! insert (G250_br2_106,G250_timmy) into IsOccupiedBy
-! insert (G250_br2_106,G250_paul) into IsOccupiedBy
+
 ! insert (G250_b2,G250_br1_306) into IsInBedroom
-! insert (G250_tom,G250_carol) into IsMarriedWith
-! insert (G250_carol,G250_tom) into IsMarriedWith
-! insert (G250_paul,G250_claire) into IsTutoredBy
-! insert (G250_paul,G250_timmy) into IsTutoredBy
+
 check

@@ -11,7 +11,7 @@
 ! set G250_r1.floorMin := 1
 ! set G250_r1.floorMax := 3
 ! set G250_r1.category := #economy
-! set G250_r1.maxNbOfFreeUnits := 10
+! set G250_r1.maxNbOfFreeUnits := 4
 ! set G250_r1.avgRate := 2
 
 ! create G250_br1_306 : Bedroom
@@ -34,5 +34,4 @@
 
 ! insert (G250_r1,G250_br1_306) into ContainsRooms
 ! insert (G250_br1_306,G250_carol) into IsOccupiedBy
-
 check

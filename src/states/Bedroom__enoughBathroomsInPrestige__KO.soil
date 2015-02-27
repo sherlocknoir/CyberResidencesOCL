@@ -5,3 +5,58 @@
 
 -- open -q <BASE>.soil
 -- here some mutation code
+
+
+! create G250_r2 : Residence
+! set G250_r2.name := 'west'
+! set G250_r2.floorMin := 0
+! set G250_r2.floorMax := 10
+! set G250_r2.category := #prestige
+! set G250_r2.maxNbOfFreeUnits := 5
+! set G250_r2.avgRate := 0
+
+! create G250_br2_106 : Bedroom
+! set G250_br2_106.number := 106
+! set G250_br2_106.floor := 1
+! set G250_br2_106.isOutOfOrder := false
+! set G250_br2_106.nbOfSingleBeds := 1
+! set G250_br2_106.nbOfDoubleBeds := 1
+! set G250_br2_106.rate := 0
+! set G250_br2_106.isNonSmoking := true
+! set G250_br2_106.nbOfUnits := 3
+! create G250_br2_206 : Bedroom
+! set G250_br2_206.number := 206
+! set G250_br2_206.floor := 2
+! set G250_br2_206.isOutOfOrder := false
+! set G250_br2_206.nbOfSingleBeds := 0
+! set G250_br2_206.nbOfDoubleBeds := 1
+! set G250_br2_206.rate := 0
+! set G250_br2_206.isNonSmoking := true
+! set G250_br2_206.nbOfUnits := 2
+
+
+! create G250_b3 : Bathroom
+! set G250_b3.number := 107
+! set G250_b3.floor := 1
+! set G250_b3.isOutOfOrder := false
+! set G250_b3.isOnTheLanding := true
+! create G250_b4 : Bathroom
+! set G250_b4.number := 108
+! set G250_b4.floor := 1
+! set G250_b4.isOutOfOrder := false
+! set G250_b4.isOnTheLanding := true
+! create G250_b5 : Bathroom
+! set G250_b5.number := 207
+! set G250_b5.floor := 2
+! set G250_b5.isOutOfOrder := false
+! set G250_b5.isOnTheLanding := true
+
+
+! insert (G250_r2,G250_br2_106) into ContainsRooms
+
+! insert (G250_r2,G250_br2_206) into ContainsRooms
+
+! insert (G250_r2,G250_b3) into ContainsRooms
+! insert (G250_r2,G250_b4) into ContainsRooms
+! insert (G250_r2,G250_b5) into ContainsRooms
+check

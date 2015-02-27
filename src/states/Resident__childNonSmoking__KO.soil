@@ -12,4 +12,12 @@
 ! set G250_clairebad.gender := #female
 ! set G250_clairebad.isSmoker := true
 
+! create G250_paul : Resident
+! set G250_paul.name := 'Paul Bismut'
+! set G250_paul.age := 26
+! set G250_paul.gender := #male
+! set G250_paul.isSmoker := true
+
+! insert (G250_paul,G250_clairebad) into IsTutoredBy
+
 check
