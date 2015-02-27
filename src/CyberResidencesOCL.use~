@@ -148,7 +148,7 @@ end
 constraints
 
 -------------------------------------------------------------------------------
---                           aboooConditions
+--     ########## work with xxxPercentage                          aboooConditions
 -------------------------------------------------------------------------------
 -- Conditions for granting a discount "All Bathrooms Out Of Order" (ABOOO).
 -- Note Easy. Use 'one'. Should work with 'xxxPercentage'
@@ -163,7 +163,7 @@ constraints
     implies self.discounts->one(label = 'BROOO50')
 
 -------------------------------------------------------------------------------
---                              aboooPercentage
+--   ###########                            aboooPercentage
 -------------------------------------------------------------------------------
 -- Percentage of "ABOOO" discount according to residence category.
 -- Not Easy. Should work with the corresponding invariant 'xxxConditions'
@@ -268,7 +268,7 @@ context Rent inv cumulatedDiscounts:
 
 
 -------------------------------------------------------------------------------
---                                deriveAvgRate
+--        #########                        deriveAvgRate
 -------------------------------------------------------------------------------
 -- Derivation of the avgRate attribute.
 -- Medium
