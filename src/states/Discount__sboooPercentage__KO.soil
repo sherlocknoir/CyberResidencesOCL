@@ -10,14 +10,14 @@
 ! set G250_r1.name := 'ouest'
 ! set G250_r1.floorMin := 1
 ! set G250_r1.floorMax := 3
-! set G250_r1.category := #economy
+! set G250_r1.category := #premium
 ! set G250_r1.maxNbOfFreeUnits := 4
 ! set G250_r1.avgRate := 30
 ! create G250_r2 : Residence
 ! set G250_r2.name := 'west'
 ! set G250_r2.floorMin := 0
 ! set G250_r2.floorMax := 10
-! set G250_r2.category := #prestige
+! set G250_r2.category := #premium
 ! set G250_r2.maxNbOfFreeUnits := 5
 ! set G250_r2.avgRate := 100
 ! create G250_r3 : Residence
@@ -31,7 +31,7 @@
 ! set G250_r4.name := 'south'
 ! set G250_r4.floorMin := 1
 ! set G250_r4.floorMax := 10
-! set G250_r4.category := #standard
+! set G250_r4.category := #premium
 ! set G250_r4.maxNbOfFreeUnits := 1
 ! set G250_r4.avgRate := 100
 ! create G250_r1_303 : Room
@@ -164,16 +164,16 @@
 ! set G250_kitten.paidRate := 0
 ! create G250_D1 : Discount
 ! set G250_D1.percentage := 50
-! set G250_D1.label := 'super'
+! set G250_D1.label := 'SBOOO'
 ! create G250_D2 : Discount
 ! set G250_D2.percentage := 20
-! set G250_D2.label := 'holiday'
+! set G250_D2.label := 'SBOOO'
 ! create G250_D3 : Discount
 ! set G250_D3.percentage := 26
-! set G250_D3.label := 'SBOO'
+! set G250_D3.label := 'SBOOO'
 ! create G250_D4 : Discount
 ! set G250_D4.percentage := 50
-! set G250_D4.label := 'BROOO50'
+! set G250_D4.label := 'SBOOO'
 ! create G250_rent1 : Rent between (G250_br1_306,G250_carol)
 ! set G250_rent1.discount :=70
 ! set G250_rent1.rate :=30

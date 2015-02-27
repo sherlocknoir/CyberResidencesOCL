@@ -603,7 +603,7 @@ context Rent inv sboooConditions:
     
 
 -------------------------------------------------------------------------------
---   DONE but KO doesnt fail                           sboooPercentage
+--   DONE KO oK                           sboooPercentage
 -------------------------------------------------------------------------------
 -- Percentage of "SBOOO" discount according to residence category.
 -- Not Easy. Should work with the corresponding invariant 'xxxConditions'
@@ -611,9 +611,17 @@ context Rent inv sboooConditions:
 context Discount inv sboooPercentage:
     -- In premium residences, SBOO discounts are equal to 25%. For
     -- standard category the discount is of 10%.
-    (self.label = 'SBOOO' and self.rent.rentedBedrooms.residence.category = Category::premium  implies self.percentage = 25)
-    or
-    (self.label = 'SBOOO' and self.rent.rentedBedrooms.residence.category = Category::standard implies self.percentage = 10)
+    if 
+    self.label = 'SBOOO' and self.rent.rentedBedrooms.residence.category = Category::premium
+    then 
+        self.percentage = 25
+    else
+        if self.label = 'SBOOO' and self.rent.rentedBedrooms.residence.category = Category::standard
+        then
+        self.percentage = 10
+        else true
+        endif
+    endif    
 -------------------------------------------------------------------------------
 --  DONE KO:OK                    smokingPremiumPolicy
 -------------------------------------------------------------------------------
