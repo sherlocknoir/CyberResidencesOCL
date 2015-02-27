@@ -5,3 +5,221 @@
 
 -- open -q <BASE>.soil
 -- here some mutation code
+! create G250_r1 : Residence
+! set G250_r1.name := 'ouest'
+! set G250_r1.floorMin := 1
+! set G250_r1.floorMax := 3
+! set G250_r1.category := #economy
+! set G250_r1.maxNbOfFreeUnits := 4
+! set G250_r1.avgRate := 30
+! create G250_r2 : Residence
+! set G250_r2.name := 'west'
+! set G250_r2.floorMin := 0
+! set G250_r2.floorMax := 10
+! set G250_r2.category := #prestige
+! set G250_r2.maxNbOfFreeUnits := 5
+! set G250_r2.avgRate := 100
+! create G250_r3 : Residence
+! set G250_r3.name := 'east'
+! set G250_r3.floorMin := 0
+! set G250_r3.floorMax := 10
+! set G250_r3.category := #premium
+! set G250_r3.maxNbOfFreeUnits := 1
+! set G250_r3.avgRate := 100
+! create G250_r4 : Residence
+! set G250_r4.name := 'south'
+! set G250_r4.floorMin := 1
+! set G250_r4.floorMax := 10
+! set G250_r4.category := #standard
+! set G250_r4.maxNbOfFreeUnits := 1
+! set G250_r4.avgRate := 100
+! create G250_r1_303 : Room
+! set G250_r1_303.number := 303
+! set G250_r1_303.floor := 3
+! set G250_r1_303.isOutOfOrder := false
+! create G250_br1_306 : Bedroom
+! set G250_br1_306.number := 306
+! set G250_br1_306.floor := 3
+! set G250_br1_306.isOutOfOrder := false
+! set G250_br1_306.nbOfSingleBeds := 2
+! set G250_br1_306.nbOfDoubleBeds := 1
+! set G250_br1_306.rate := 100
+! set G250_br1_306.isNonSmoking := false
+! set G250_br1_306.nbOfUnits := 4
+! create G250_br2_106 : Bedroom
+! set G250_br2_106.number := 106
+! set G250_br2_106.floor := 1
+! set G250_br2_106.isOutOfOrder := false
+! set G250_br2_106.nbOfSingleBeds := 1
+! set G250_br2_106.nbOfDoubleBeds := 1
+! set G250_br2_106.rate := 100
+! set G250_br2_106.isNonSmoking := true
+! set G250_br2_106.nbOfUnits := 3
+! create G250_br2_206 : Bedroom
+! set G250_br2_206.number := 206
+! set G250_br2_206.floor := 2
+! set G250_br2_206.isOutOfOrder := false
+! set G250_br2_206.nbOfSingleBeds := 0
+! set G250_br2_206.nbOfDoubleBeds := 1
+! set G250_br2_206.rate := 100
+! set G250_br2_206.isNonSmoking := true
+! set G250_br2_206.nbOfUnits := 2
+! create G250_br3_303 : Bedroom
+! set G250_br3_303.number := 303
+! set G250_br3_303.floor := 3
+! set G250_br3_303.isOutOfOrder := false
+! set G250_br3_303.nbOfSingleBeds := 1
+! set G250_br3_303.nbOfDoubleBeds := 0
+! set G250_br3_303.rate := 100
+! set G250_br3_303.isNonSmoking := false
+! set G250_br3_303.nbOfUnits := 1
+! create G250_br4_200 : Bedroom
+! set G250_br4_200.number := 200
+! set G250_br4_200.floor := 2
+! set G250_br4_200.isOutOfOrder := false
+! set G250_br4_200.nbOfSingleBeds := 1
+! set G250_br4_200.nbOfDoubleBeds := 0
+! set G250_br4_200.rate := 100
+! set G250_br4_200.isNonSmoking := false
+! set G250_br4_200.nbOfUnits := 1
+! create G250_b1 : Bathroom
+! set G250_b1.number := 345
+! set G250_b1.floor := 3
+! set G250_b1.isOutOfOrder := false
+! set G250_b1.isOnTheLanding := true
+! create G250_b2 : Bathroom
+! set G250_b2.number := 306
+! set G250_b2.floor := 3
+! set G250_b2.isOutOfOrder := false
+! set G250_b2.isOnTheLanding := false
+! create G250_b3 : Bathroom
+! set G250_b3.number := 106
+! set G250_b3.floor := 1
+! set G250_b3.isOutOfOrder := false
+! set G250_b3.isOnTheLanding := false
+! create G250_b4 : Bathroom
+! set G250_b4.number := 106
+! set G250_b4.floor := 1
+! set G250_b4.isOutOfOrder := false
+! set G250_b4.isOnTheLanding := false
+! create G250_b5 : Bathroom
+! set G250_b5.number := 206
+! set G250_b5.floor := 2
+! set G250_b5.isOutOfOrder := false
+! set G250_b5.isOnTheLanding := false
+! create G250_b6 : Bathroom
+! set G250_b6.number := 206
+! set G250_b6.floor := 2
+! set G250_b6.isOutOfOrder := false
+! set G250_b6.isOnTheLanding := false
+! create G250_b7 : Bathroom
+! set G250_b7.number := 206
+! set G250_b7.floor := 2
+! set G250_b7.isOutOfOrder := false
+! set G250_b7.isOnTheLanding := false
+! create G250_b8 : Bathroom
+! set G250_b8.number := 106
+! set G250_b8.floor := 1
+! set G250_b8.isOutOfOrder := false
+! set G250_b8.isOnTheLanding := false
+! create G250_b9_r4 : Bathroom
+! set G250_b9_r4.number := 200
+! set G250_b9_r4.floor := 2
+! set G250_b9_r4.isOutOfOrder := true
+! set G250_b9_r4.isOnTheLanding := false
+! create G250_timmy : Resident
+! set G250_timmy.name := 'Timmy Smith'
+! set G250_timmy.age := 6
+! set G250_timmy.gender := #male
+! set G250_timmy.isSmoker := false
+! create G250_tom : Resident
+! set G250_tom.name := 'Tom Smith'
+! set G250_tom.age := 20
+! set G250_tom.gender := #male
+! set G250_tom.isSmoker := false
+! create G250_paul : Tenant
+! set G250_paul.name := 'Paul Bismut'
+! set G250_paul.age := 26
+! set G250_paul.gender := #male
+! set G250_paul.isSmoker := true
+! set G250_paul.paidRate := 100.5
+! create G250_carol : Tenant
+! set G250_carol.name := 'Carol Smith'
+! set G250_carol.age := 18
+! set G250_carol.gender := #female
+! set G250_carol.isSmoker := false
+! set G250_carol.paidRate := 100
+! create G250_tomh : Tenant
+! set G250_tomh.name := 'Tom Tom'
+! set G250_tomh.age := 20
+! set G250_tomh.gender := #male
+! set G250_tomh.isSmoker := false
+! set G250_tomh.paidRate := 0
+! create G250_kitten : Tenant
+! set G250_kitten.name := 'Kitty Cat'
+! set G250_kitten.age := 65
+! set G250_kitten.gender := #female
+! set G250_kitten.isSmoker := false
+! set G250_kitten.paidRate := 0
+! create G250_D1 : Discount
+! set G250_D1.percentage := 50
+! set G250_D1.label := 'super'
+! create G250_D2 : Discount
+! set G250_D2.percentage := 20
+! set G250_D2.label := 'holiday'
+! create G250_D3 : Discount
+! set G250_D3.percentage := 25
+! set G250_D3.label := 'SBOO'
+! create G250_D4 : Discount
+! set G250_D4.percentage := 51
+! set G250_D4.label := 'BROOO50'
+! create G250_rent1 : Rent between (G250_br1_306,G250_carol)
+! set G250_rent1.discount :=70
+! set G250_rent1.rate :=30
+! create G250_rent2 : Rent between (G250_br2_106,G250_tomh)
+! set G250_rent2.discount :=25
+! set G250_rent2.rate :=75
+! create G250_rent3 : Rent between (G250_br3_303,G250_paul)
+! set G250_rent3.discount :=0
+! set G250_rent3.rate :=100
+! create G250_rent4 : Rent between (G250_br4_200,G250_kitten)
+! set G250_rent4.discount :=51
+! set G250_rent4.rate :=49
+! insert (G250_r1,G250_r1_303) into ContainsRooms
+! insert (G250_r2,G250_br2_106) into ContainsRooms
+! insert (G250_r3,G250_br3_303) into ContainsRooms
+! insert (G250_r1,G250_br1_306) into ContainsRooms
+! insert (G250_r2,G250_br2_206) into ContainsRooms
+! insert (G250_r1,G250_b1) into ContainsRooms
+! insert (G250_r1,G250_b2) into ContainsRooms
+! insert (G250_r2,G250_b3) into ContainsRooms
+! insert (G250_r2,G250_b4) into ContainsRooms
+! insert (G250_r2,G250_b5) into ContainsRooms
+! insert (G250_r2,G250_b6) into ContainsRooms
+! insert (G250_r2,G250_b7) into ContainsRooms
+! insert (G250_r2,G250_b8) into ContainsRooms
+! insert (G250_r4,G250_br4_200) into ContainsRooms
+! insert (G250_r4,G250_b9_r4) into ContainsRooms
+! insert (G250_rent1,G250_D1) into HasDiscounts
+! insert (G250_rent1,G250_D2) into HasDiscounts
+! insert (G250_rent4,G250_D4) into HasDiscounts
+! insert (G250_rent2,G250_D3) into HasDiscounts
+! insert (G250_b2,G250_br1_306) into IsInBedroom
+! insert (G250_b3,G250_br2_106) into IsInBedroom
+! insert (G250_b4,G250_br2_106) into IsInBedroom
+! insert (G250_b5,G250_br2_206) into IsInBedroom
+! insert (G250_b6,G250_br2_206) into IsInBedroom
+! insert (G250_b7,G250_br2_206) into IsInBedroom
+! insert (G250_b8,G250_br2_106) into IsInBedroom
+! insert (G250_b9_r4,G250_br4_200) into IsInBedroom
+! insert (G250_br1_306,G250_carol) into IsOccupiedBy
+! insert (G250_br2_106,G250_timmy) into IsOccupiedBy
+! insert (G250_br2_106,G250_tomh) into IsOccupiedBy
+! insert (G250_br3_303,G250_paul) into IsOccupiedBy
+! insert (G250_br1_306,G250_tom) into IsOccupiedBy
+! insert (G250_br4_200,G250_kitten) into IsOccupiedBy
+! insert (G250_tom,G250_carol) into IsMarriedWith
+! insert (G250_carol,G250_tom) into IsMarriedWith
+! insert (G250_tomh,G250_timmy) into IsTutoredBy
+
+check
