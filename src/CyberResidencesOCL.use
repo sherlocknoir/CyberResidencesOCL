@@ -361,12 +361,12 @@ context Tenant inv derivePaidRate:
     -- all bedrooms rented. If the members of his or her group is
     -- spread over more than one floor, then 20€ of reduction will
     -- automatically be deduced.
-if let groupFloors : Set(Integer) = self.rentedBedrooms.floor->asSet(), oneFloor : Integer = 1 in (groupFloors->size()) > oneFloor 
-then
-    self.paidRate = self.rentedBedrooms.rate->sum() - 20
-else
-    self.paidRate = self.rentedBedrooms.rate->sum()
-endif
+--if let groupFloors : Set(Integer) = self.rentedBedrooms.floor->asSet(), oneFloor : Integer = 1 in (groupFloors->size()) > oneFloor 
+--then
+  --  self.paidRate = self.rentedBedrooms.rate->sum() - 20
+--else
+ --   self.paidRate = self.rentedBedrooms.rate->sum()
+--endif
 
 
 -------------------------------------------------------------------------------
